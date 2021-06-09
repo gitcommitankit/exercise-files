@@ -1,6 +1,6 @@
 name: test
 
-on: pull
+on: pull_request
 
 jobs:
     job1:

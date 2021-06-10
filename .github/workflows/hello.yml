@@ -1,9 +1,11 @@
 name: first
 on: 
  push:
-   - dev
+   branches:
+    - dev
  pull_request:
-   - master
+   branches:
+    - master
  releases:
    types:
      - created

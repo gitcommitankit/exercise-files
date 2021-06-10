@@ -32,7 +32,7 @@ jobs:
       steps: 
        - name: Check if the secret is working properly
          uses: aws-actions/configure-aws-credentials@v1
-          with:
+         with:
               aws-access-id: ${{ secret.AWS_ACCESS_KEY }}
               aws-secret-id: ${{ secret.AWS_SECRET_KEY }}
               aws-region: ${{ secret.AWS_REGION }}

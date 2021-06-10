@@ -3,7 +3,7 @@ on: [push]
 jobs:
     practicejob: 
         name: Practicejob
-        runs-on: ubunt-latest
+        runs-on: ubuntu-latest
         steps:
           - name: Practicejob
             uses: actions/checkout@v2

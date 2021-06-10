@@ -30,10 +30,11 @@ jobs:
       name: CheckSecrets
       runs-on: ubuntu-latest
       steps: 
-       - name: Check if the secret is working properly
+       - name: ConfigureAWSCredentials
          uses: aws-actions/configure-aws-credentials@v1
          with:
               aws-access-id: ${{ secret.AWS_ACCESS_KEY }}
               aws-secret-id: ${{ secret.AWS_SECRET_KEY }}
               aws-region: ${{ secret.AWS_REGION }}
-         run: aws s3 ls
+       - name: Check if creds are working properly
+         run: aws s3api list-buckets

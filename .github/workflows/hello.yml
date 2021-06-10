@@ -19,4 +19,4 @@ jobs:
           - name: ls contents
             run: |
                  ls -l 
-                 ls -l ./testing
+                 ls -l ../

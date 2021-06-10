@@ -11,12 +11,9 @@ jobs:
               repository: gitcommitankit/nodejskube
               ref: master
               path: ./testing
-    lscontents:
-        name: lsrepocontents
-        runs-on: ubuntu-latest
-        needs: Practicejob
-        steps:
-          - name: ls contents
+          - name: ls the repository
             run: |
-                 ls -l 
+                 ls -l
                  ls -l ../
+                 ls -l nodejskube
+

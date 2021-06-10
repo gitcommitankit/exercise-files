@@ -1,5 +1,12 @@
 name: first
-on: [push]
+on: 
+ push:
+   - dev
+ pull_request:
+   - master
+ releases:
+   types:
+     - created
 jobs:
     practicejob: 
         name: Practicejob

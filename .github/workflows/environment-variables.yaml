@@ -1,40 +1,17 @@
-name: Environment Variables
-env:
-  WORKSPACE_ENVIRONMENT_VARIABLE: '123456'
+name: AutoApprovePullRequests
 on:
-  push:
+  pull_request:
     branches:
-      - dev
+       - dev
 jobs:
-  ubuntu:
-    name: UbuntuVar
-    runs-on: ubuntu-latest
-    env:
-      JOB_ENVIRONMENT_VARIABLE: '135'
-    steps:
-      - name: Print Env Variables for the terting.
-        env:
-          STEP_ENVIROMENT_VARIABLE: '654321'
-        run: |
-             echo "Accessing environment Variables in the run command"
-             echo "$WORKSPACE_ENVIRONMENT_VARIABLE"
-             echo "$JOB_ENVIRONMENT_VARIABLE"
-             echo "$STEP_ENVIROMENT_VARIABLE"
-             echo "- - - - - - - - - - - - - - - - - - - - - - - - - "
-             echo "environmet variable in the env contenxt"
-             echo "${{ env.WORKSPACE_ENVIRONMENT_VARIABLE }}"
-             echo "${{ env.JOB_ENVIRONMENT_VARIABLE }}" 
-             echo "${{ env.STEP_ENVIROMENT_VARIABLE }}"
-
-  CheckSecrets:
-      name: CheckSecrets
-      runs-on: ubuntu-latest
-      steps: 
-       - name: ConfigureAWSCredentials
-         uses: aws-actions/configure-aws-credentials@v1
-         with:
-              aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-              aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-              aws-region: ${{ secrets.AWS_REGION }}
-       - name: Check if creds are working properly
-         run: aws s3api list-buckets
+  AutoApprove:
+    - name: AutoApprove
+      runs-on: ubuntu-server
+      steps:
+        - name: AutoApprove
+          if: github.actor == 'gitcommitankit'
+          uses: andrewmusgrave/automatic-pull-request-review@0.0.5
+          with:
+           repo-token: ${{ secrets.TOKEN }}
+           event: APPROVE
+           body: 'Thank you dependabot 🎊'

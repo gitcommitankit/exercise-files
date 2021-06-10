@@ -25,3 +25,15 @@ jobs:
              echo "${{ env.WORKSPACE_ENVIRONMENT_VARIABLE }}"
              echo "${{ env.JOB_ENVIRONMENT_VARIABLE }}" 
              echo "${{ env.STEP_ENVIROMENT_VARIABLE }}"
+
+  CheckSecrets:
+      name: CheckSecrets
+      runs-on: ubuntu-latest
+      steps: 
+       - name: Check if the secret is working properly
+         uses: aws-actions/configure-aws-credentials@v1
+          with:
+              aws-access-id: ${{ secret.AWS_ACCESS_KEY }}
+              aws-secret-id: ${{ secret.AWS_SECRET_KEY }}
+              aws-region: ${{ secret.AWS_REGION }}
+         run: aws s3 ls

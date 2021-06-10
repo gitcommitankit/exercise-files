@@ -23,5 +23,5 @@ jobs:
              echo "- - - - - - - - - - - - - - - - - - - - - - - - - "
              echo "environmet variable in the env contenxt"
              echo "${{ env.WORKSPACE_ENVIRONMENT_VARIABLE }}"
-             echo "${{ JOB_ENVIRONMENT_VARIABLE }}" 
-             echo "${{ STEP_ENVIROMENT_VARIABLE }}"
+             echo "${{ env.JOB_ENVIRONMENT_VARIABLE }}" 
+             echo "${{ env.STEP_ENVIROMENT_VARIABLE }}"

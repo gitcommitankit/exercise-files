@@ -15,7 +15,6 @@ jobs:
       - name: Print Env Variables for the terting.
         env:
           STEP_ENVIROMENT_VARIABLE: '654321'
-
         run: |
              echo "Accessing environment Variables in the run command"
              echo "$WORKSPACE_ENVIRONMENT_VARIABLE"

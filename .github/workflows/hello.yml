@@ -20,13 +20,19 @@ jobs:
               run : "Get-ChildItem Env: | Sort-Object Name"
     practicejob: 
         name: Practicejob
-        uses: actions/checkout@v2
-        with:
-          repository: gitcommitankit/nodejskube
-          ref: master
-          path: ./testing
+        runs-on: ubunt-latest
+        steps:
+          - name: Practicejob
+            uses: actions/checkout@v2
+             with:
+              repository: gitcommitankit/nodejskube
+              ref: master
+              path: ./testing
     lscontents:
         name: lsrepocontents
-        run: |
-          ls -l 
-          ls -l ./testing
+        runs-on: ubuntu-latest
+        steps:
+          - name: ls contents
+            run: |
+                 ls -l 
+                 ls -l ./testing

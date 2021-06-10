@@ -13,6 +13,6 @@ jobs:
               path: ./testing
           - name: ls the repository
             run: |
-                 ls -l
+                 ls -l testing
                  ls -l ../
 

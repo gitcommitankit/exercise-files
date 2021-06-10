@@ -1,0 +1,40 @@
+name: Build Tomcat
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps  :
+    - name : Checkout Tomcat Users
+      uses : actions/checkout@v2
+    
+    - name : list the current files and directories
+      run  :  |
+           ls -ltr
+           java -version
+    
+    - name : Checkout Tomcat Code in tomcat directory
+      uses : actions/checkout@v2
+      with :
+        repository: apache/tomcat
+        ref       : master
+        path      : ./tomcat
+    
+    - name : Setup Java 9
+      uses: actions/setup-java@v1
+      with:
+        java-version: '9.0.4'
+        java-package: 'jdk'
+        architecture: x64
+
+    - name: List the files and directories again.
+      run: |
+          ls -ltr
+          java -version
+
+    - name: copy the tomcat-user.xml file.
+      run:  cp -v tomcat-users.xml ./tomcat/conf/tomcat-users.xml
+ 
+    - name: Build tomcat 9
+      run: |
+          cd ./tomcat
+          ant

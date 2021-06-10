@@ -24,7 +24,7 @@ jobs:
         steps:
           - name: Practicejob
             uses: actions/checkout@v2
-             with:
+            with:
               repository: gitcommitankit/nodejskube
               ref: master
               path: ./testing
